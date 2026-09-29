@@ -1,0 +1,9 @@
+[build]
+  base = "presentation-main"
+  command = "npm run build"
+  publish = "presentation-main/dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
