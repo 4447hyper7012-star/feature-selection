@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-base: 250 250 249;
+    --bg-surface: 255 255 255;
+    --bg-elevated: 255 255 255;
+    --border-base: 231 229 228;
+    --text-primary: 28 25 23;
+    --text-secondary: 120 113 108;
+    --text-muted: 168 162 158;
+  }
+
+  .dark {
+    --bg-base: 9 9 11;
+    --bg-surface: 24 24 27;
+    --bg-elevated: 39 39 42;
+    --border-base: 63 63 70;
+    --text-primary: 250 250 249;
+    --text-secondary: 161 161 170;
+    --text-muted: 113 113 122;
+  }
+
+  body {
+    @apply bg-stone-50 text-stone-900 dark:bg-zinc-950 dark:text-stone-50 antialiased;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-stone-200 dark:border-zinc-800;
+  }
+
+  ::selection {
+    @apply bg-primary-500/30;
+  }
+}
+
+@layer components {
+  .surface {
+    @apply bg-white dark:bg-zinc-900 border border-stone-200 dark:border-zinc-800 rounded-2xl;
+  }
+
+  .surface-elevated {
+    @apply bg-white dark:bg-zinc-800/60 border border-stone-200 dark:border-zinc-700 rounded-2xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-stone-900 dark:text-stone-100 font-medium transition-all duration-200 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-zinc-800 text-stone-700 dark:text-stone-300 font-medium transition-all duration-200;
+  }
+
+  .nav-link {
+    @apply px-3 py-2 rounded-lg text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-zinc-800 transition-all duration-200;
+  }
+
+  .nav-link-active {
+    @apply text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-950/40;
+  }
+
+  .card {
+    @apply surface p-6 transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply hover:shadow-lg hover:border-stone-300 dark:hover:border-zinc-700;
+  }
+
+  .prose-content p {
+    @apply text-stone-700 dark:text-stone-300 leading-relaxed mb-4;
+  }
+
+  .prose-content ul {
+    @apply space-y-2 mb-4 ml-4;
+  }
+
+  .prose-content li {
+    @apply text-stone-700 dark:text-stone-300 flex gap-2 items-start;
+  }
+
+  .prose-content li::before {
+    content: '';
+    @apply mt-2 w-1.5 h-1.5 rounded-full bg-primary-500 shrink-0;
+  }
+
+  .prose-content h4 {
+    @apply font-semibold text-stone-900 dark:text-stone-100 mt-6 mb-3;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2 rounded-lg bg-stone-50 dark:bg-zinc-800 border border-stone-300 dark:border-zinc-700 text-stone-900 dark:text-stone-100 text-sm focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500 outline-none transition-all;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-stone-300 dark:bg-zinc-700 rounded-full;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Prism syntax highlighting overrides */
+pre[class*="language-"] {
+  @apply !bg-zinc-900 !text-zinc-100 rounded-xl !m-0 !p-4 text-sm leading-relaxed overflow-x-auto;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+code[class*="language-"] {
+  @apply !bg-transparent !text-inherit;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.token.comment, .token.prolog, .token.doctype, .token.cdata {
+  @apply !text-zinc-500;
+}
+.token.keyword {
+  @apply !text-primary-400;
+}
+.token.string, .token.attr-value {
+  @apply !text-accent-400;
+}
+.token.number, .token.boolean {
+  @apply !text-warning-400;
+}
+.token.function {
+  @apply !text-accent-300;
+}
+.token.class-name, .token.builtin {
+  @apply !text-primary-300;
+}
+.token.operator, .token.punctuation {
+  @apply !text-zinc-400;
+}
+.token.decorator, .token.annotation {
+  @apply !text-warning-300;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
